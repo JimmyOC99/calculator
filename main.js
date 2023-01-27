@@ -32,11 +32,25 @@ document.addEventListener("DOMContentLoaded", function(){
         userInput.textContent = current_value;
         currentScreen.textContent = current_value;
     })
+    equals.addEventListener('click', function(){
+        if (current_value != "" || previous_value != ""){
+            calculate()
+            userInput.textContent = "";
+            currentScreen.textContent = previous_value;
+        }
+    })
+    decimal.addEventListener('click', function(){
+        add_decimal()
+    })
+    remove.addEventListener('click', function(){
+        current_value = current_value.slice(0,-1);
+        currentScreen.textContent = current_value;
+    })
 })
 
-function numberSelected(num){
+function numberSelected(n){
     if (current_value.length <=9){
-        current_value += num
+        current_value += n
     }
 }
 
@@ -44,4 +58,34 @@ function operatorSelected(operator){
     operator_sign = operator;
     previous_value = current_value;
     current_value = "";
+}
+
+function calculate(){
+    previous_value = Number(previous_value);
+    current_value = Number(current_value);
+    if (operator_sign === '+') {
+        previous_value += current_value;}
+    else if (operator_sign === '-'){
+        previous_value -= current_value;}
+    else if (operator_sign === '÷'){
+        previous_value /= current_value;}
+    else if (operator_sign === 'x'){
+        previous_value *= current_value;} 
+    else {
+        previous_value %= current_value;} 
+    
+    previous_value = round_num(previous_value);
+    previous_value = previous_value.toString();
+    current_value = previous_value.toString();
+}
+
+function round_num(n){
+    return Math.round(n*1000) / 1000;
+}
+
+function add_decimal(){
+    if(!current_value.includes(".")){
+        current_value += ".";
+        currentScreen.textContent = current_value;
+    }
 }

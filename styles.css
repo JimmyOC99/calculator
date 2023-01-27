@@ -78,6 +78,7 @@ button.equals {
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
+    padding: 10px;
 }
 
 .user-input {
