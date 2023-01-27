@@ -2,15 +2,88 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* ALIGNMENTS */
+
+.first-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .calc-buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: .5rem;
-    height: 100%;
+    /*height: 100%;*/
+    border-radius: 25% 10%;
+}
+
+.calc-buttons button {
+    border-radius: 25% 10%;
+    font-size: 30px;
 }
 
 button.equals {
     grid-column: 3 /5;
+}
+
+/* COLOURS AND HOVERS */
+
+.clear, .delete {
+    border: 3px solid rgb(23, 244, 248);
+}
+
+.number, .decimal {
+    border: 3px solid salmon;
+}
+
+.operator {
+    border: 3px solid rgb(166, 89, 225);
+}
+
+.equals {
+    border: 3px solid palegreen;
+}
+
+/* HOVERS */
+.clear:hover, .delete:hover {
+    background-color: rgb(23, 244, 248);
+}
+
+.number:hover, .decimal:hover {
+    background-color: salmon;
+}
+
+.operator:hover {
+    background-color: rgb(166, 89, 225);
+}
+
+.equals:hover {
+    background-color: palegreen;
+}
+
+/* SCREEN */
+#screen {
+    width: 100%;
+    height: 50px;
+    border: 3px solid;
+    margin-bottom: .5rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.user-input {
+    font-size: 1.25rem;
+}
+
+.current {
+    font-size: 1.75rem;
 }
